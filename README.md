@@ -41,12 +41,9 @@ the [Serverless Application Model](https://aws.amazon.com/serverless/sam/) frame
 
 Use `sam deploy --guided` to deploy the stack to AWS. The guided deployment will require a list of buckets the function can scan. They should be provided in the following format: `arn:aws:s3:::<BUCKET_NAME>/*`
 
-### Publish to Serverless Application Repository
+### Package
 
-`sam package --template-file template.yaml --output-template-file packaged.yaml --s3-bucket serverless-app-packages`
-
-`sam publish --template packaged.yaml --region <region>`
-
+`sam package --output-template-file packaged.yaml --s3-bucket <bucket>`
 
 ### S3 Events
 

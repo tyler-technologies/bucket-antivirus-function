@@ -4,7 +4,7 @@ phases:
   pre_build:
     commands:
       - echo Target Bucket $S3BUCKET
-      
+
   build:
     commands:
       - make archive
@@ -12,4 +12,4 @@ phases:
   post_build:
     commands:
       - sam package --output-template-file packaged.yaml --s3-bucket $S3BUCKET
-      - aws s3 cp ./packaged.yaml $S3BUCKET/packaged.yaml
+      - aws s3 cp ./packaged.yaml s3://$S3BUCKET/packaged.yaml

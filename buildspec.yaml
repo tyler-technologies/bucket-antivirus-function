@@ -1,0 +1,19 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.7
+
+  pre_build:
+    commands:
+      - make test
+
+  build:
+    commands:
+      - sam build
+
+  post_build:
+    commands:
+      - sam package --output-template-file packaged.yaml --s3-bucket $S3BUCKET
+      - aws s3 cp ./packaged.yaml $S3BUCKET/packaged.yaml

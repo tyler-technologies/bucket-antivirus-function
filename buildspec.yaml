@@ -1,13 +1,9 @@
 version: 0.2
 
 phases:
-  install:
-    runtime-versions:
-      python: 3.7
-
   build:
     commands:
-      - sam build
+      - make archive
 
   post_build:
     commands:

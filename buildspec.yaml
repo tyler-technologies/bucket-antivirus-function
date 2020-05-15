@@ -12,5 +12,5 @@ phases:
   post_build:
     commands:
       - sam package --output-template-file sam.yaml --s3-bucket $S3BUCKET
-      - sam validate --template sam.yaml --debug 2>&1 | awk '/AWSTemplateFormatVersion/, /^$/' > packaged.yaml
+      - sam validate --template sam.yaml --debug
       - aws s3 cp ./packaged.yaml s3://$S3BUCKET/packaged.yaml

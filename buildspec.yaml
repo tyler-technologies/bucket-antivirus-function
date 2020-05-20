@@ -3,7 +3,7 @@ version: 0.2
 phases:
   pre_build:
     commands:
-      - echo Target Bucket $S3BUCKET
+      - echo Target Buckets $DEVBUCKET $PRODBUCKET
 
   build:
     commands:
@@ -11,6 +11,7 @@ phases:
 
   post_build:
     commands:
-      - sam package --output-template-file sam.yaml --s3-bucket $S3BUCKET
+      - sam package --output-template-file sam.yaml --s3-bucket $DEVBUCKET
       - sam validate --template sam.yaml --debug 2>&1 | awk '/AWSTemplateFormatVersion/, /^$/' > packaged.yaml
-      - aws s3 cp ./packaged.yaml s3://$S3BUCKET/packaged.yaml
+      - aws s3 cp ./packaged.yaml s3://$DEVBUCKET/packaged.yaml
+      - aws s3 sync s3://$DEVBUCKET s3://$PRODBUCKET --source-region us-west-2 --region us-east-1

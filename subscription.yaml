@@ -1,0 +1,26 @@
+AWSTemplateFormatVersion: "2010-09-09"
+
+Parameters:
+  TopicExportName:
+    Type: String
+    Description: The exported name of the topic from the original stack.
+  Protocol:
+    Type: String
+    Description: SNS Protocol.
+  Endpoint:
+    Type: String
+    Description: SNS Endpoint.
+  BucketName:
+    Type: String
+    Description: Name of the bucket to filter.
+Resources:
+  SnsSubscription:
+    Type: AWS::SNS::Subscription
+    Properties:
+      FilterPolicy:
+        bucket:
+          - !Ref BucketName
+      Protocol: !Ref Protocol
+      Endpoint: !Ref Endpoint
+      TopicArn:
+        Fn::ImportValue: !Ref TopicExportName

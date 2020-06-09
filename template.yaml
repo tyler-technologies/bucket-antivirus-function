@@ -117,3 +117,7 @@ Outputs:
     Value: !Ref SNSTopicAntivirusScanStatus
     Export:
       Name: !Sub "${AWS::StackName}-StatusTopicARN"
+  ScanLambdaARN:
+    Value: !Ref ScanFunction
+    Export:
+      Name: !Sub "${AWS::StackName}-ScanLambdaARN"

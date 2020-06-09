@@ -18,6 +18,7 @@ RUN yumdownloader -x \*i686 --archlist=x86_64 \
   elfutils-libs \
   json-c \
   lz4 \
+  libprelude \
   pcre2 \
   systemd-libs
 

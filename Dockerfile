@@ -19,6 +19,10 @@ RUN yumdownloader -x \*i686 --archlist=x86_64 \
   json-c \
   lz4 \
   libprelude \
+  gnutls \
+  libtasn1 \
+  lib64nettle \
+  nettle \
   pcre2 \
   systemd-libs
 
@@ -31,6 +35,10 @@ RUN rpm2cpio json-c*.rpm | cpio -idmv
 RUN rpm2cpio lz4*.rpm | cpio -idmv
 RUN rpm2cpio pcre*.rpm | cpio -idmv
 RUN rpm2cpio systemd-libs*.rpm | cpio -idmv
+RUN rpm2cpio gnutls*.rpm | cpio -idmv
+RUN rpm2cpio nettle*.rpm | cpio -idmv
+RUN rpm2cpio libprelude*.rpm | cpio -idmv
+RUN rpm2cpio libtasn1*.rpm | cpio -idmv
 
 # Copy over the binaries and libraries
 RUN cp -r /tmp/usr/bin/clamdscan \

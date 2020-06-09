@@ -107,3 +107,9 @@ Resources:
 
   SNSTopicAntivirusScanStatus:
     Type: AWS::SNS::Topic
+
+Outputs:
+  StartTopicARN:
+    Value: !Ref SNSTopicAntivirusScanStart
+  StatusTopicARN:
+    Value: !Ref SNSTopicAntivirusScanStatus

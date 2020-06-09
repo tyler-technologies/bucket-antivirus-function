@@ -111,5 +111,9 @@ Resources:
 Outputs:
   StartTopicARN:
     Value: !Ref SNSTopicAntivirusScanStart
+    Export:
+      Name: !Sub "${AWS::StackName}-StartTopicARN"
   StatusTopicARN:
     Value: !Ref SNSTopicAntivirusScanStatus
+    Export:
+      Name: !Sub "${AWS::StackName}-StatusTopicARN"
